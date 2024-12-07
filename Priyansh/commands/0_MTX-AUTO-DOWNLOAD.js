@@ -3,7 +3,7 @@ module.exports = {
     name: "linkAutoDownload",
     version: "1.3.0",
     hasPermssion: 0,
-    credits: "ARIF BABU",
+    credits: "uzairrajput",
     description:
       "Automatically detects links in messages and downloads the file.",
     commandCategory: "Utilities",
@@ -19,11 +19,11 @@ module.exports = {
     const body = content.toLowerCase();
     const { alldown } = require("nayan-media-downloader");
     if (body.startsWith("https://")) {
-      api.setMessageReaction("🩷", event.messageID, (err) => {}, true);
+      api.setMessageReaction("ðŸ©·", event.messageID, (err) => {}, true);
       const data = await alldown(content);
       console.log(data);
       const { low, high, title } = data.data;
-      api.setMessageReaction("🖤", event.messageID, (err) => {}, true);
+      api.setMessageReaction("ðŸ–¤", event.messageID, (err) => {}, true);
       const video = (
         await axios.get(high, {
           responseType: "arraybuffer",
@@ -36,7 +36,7 @@ module.exports = {
 
       return api.sendMessage(
         {
-          body: `⋆✦⋆⎯⎯⎯⎯⎯⎯⎯⎯⋆✦⋆\n\nᴛɪᴛʟᴇ: ${title}\n\n⋆✦⋆⎯⎯⎯⎯⎯⎯⎯⎯⋆✦⋆`,
+          body: `â‹†âœ¦â‹†âŽ¯âŽ¯âŽ¯âŽ¯âŽ¯âŽ¯âŽ¯âŽ¯â‹†âœ¦â‹†\n\ná´›Éªá´›ÊŸá´‡: ${title}\n\nâ‹†âœ¦â‹†âŽ¯âŽ¯âŽ¯âŽ¯âŽ¯âŽ¯âŽ¯âŽ¯â‹†âœ¦â‹†`,
           attachment: fs.createReadStream(__dirname + "/cache/auto.mp4"),
         },
         event.threadID,
