@@ -3,8 +3,8 @@ module.exports.config = {
         name: "khana-khao",
     version: "1.1.1",
         hasPermssion: 0,
-        credits: "AADI BABU",
-        description: "THIS BOT IS MR AADI BABU",
+        credits: "uzairrajput",
+        description: "THIS BOT WAS MADE BY UZAIR RAJPUT MTX",
         commandCategory: "no prefix",
     cooldowns: 5, 
 };
@@ -17,7 +17,7 @@ module.exports.handleEvent = function({ api, event, client, __GLOBAL }) {
 react.includes("Khana") ||
 react.includes("khana")) {
                 var msg = {
-                                body: `=𝐎𝐰𝐧𝐞𝐫 ➻  𝐒𝐡𝐀𝐀𝐧 𝐊𝐡𝐀𝐍 \n__________________________________\n\n𝐋𝐨 𝐁𝐚𝐁𝐲\n__________________________________`,attachment: fs.createReadStream(__dirname + `/noprefix/received_472683075271350.mp4`)
+                                body: `=𝐎𝐰𝐧𝐞𝐫 ➻  𝑼𝒛𝒂𝒊𝒓 𝑹𝒂𝒋𝒑𝒖𝒕  \n__________________________________\n\n𝐋𝐨 𝐁𝐚𝐁𝐲\n__________________________________`,attachment: fs.createReadStream(__dirname + `/mtxuzair/received_472683075271350.mp4`)
                         }
                         api.sendMessage(msg, threadID, messageID);
     api.setMessageReaction("💋", event.messageID, (err) => {}, true)
