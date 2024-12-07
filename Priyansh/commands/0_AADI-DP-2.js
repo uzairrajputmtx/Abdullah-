@@ -2,8 +2,8 @@ module.exports.config = {
   name: "dp2",
   version: "1.0.0",
   hasPermssion: 0,
-  credits: "AADI BABU",
-  description: "THIS BOT IS MADE BY AADI BABU",
+  credits: "uzairrajput",
+  description: "THIS BOT IS MADE BY UZAIR RAJPUT MTX",
   commandCategory: "PROFILE DP 2",
   usages: "SELF DP AND MENTION",
   dependencies: {
@@ -83,7 +83,7 @@ module.exports.run = async function ({ args, Users, Threads, api, event, Currenc
   ctx.drawImage(baseImage, 0, 0, canvas.width, canvas.height);
     ctx.font = "400 23px Arial";
           ctx.fillStyle = "#1878F3";
-          ctx.textAlign = "start";
+          ctx.textAlign = "start"; 
          
          
           const lines = await this.wrapText(ctx, name, 1160);
@@ -103,4 +103,4 @@ module.exports.run = async function ({ args, Users, Threads, api, event, Currenc
     }
  
  
-//MADE BY AADI BABU 
+//MADE BY UZAIR RAJPUT MTX 
