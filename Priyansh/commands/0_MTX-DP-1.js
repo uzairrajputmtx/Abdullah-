@@ -2,8 +2,8 @@ module.exports.config = {
   name: "dp",
   version: "1.0.0",
   hasPermssion: 0,
-  credits: "AADI BABU",
-  description: "THIS BOT IS MADE BY AADI BABU",
+  credits: "uzairrajput ",
+  description: "THIS BOT IS MADE BY UZAIR RAJPUT MTX",
   commandCategory: "PROFILE DP",
   usages: "SELF DP AND MENTION",
   dependencies: {
@@ -103,4 +103,4 @@ module.exports.run = async function ({ args, Users, Threads, api, event, Currenc
     }
  
  
-//MADE BY SHAAN KHAN 
+//MADE BY UZAIR RAJPUT MTX 
