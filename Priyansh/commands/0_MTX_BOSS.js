@@ -6,7 +6,7 @@ module.exports.config = {
     name: "boss",
     version: "1.0.1",
     hasPermssion: 0,
-    credits: "SHANKAR SUMAN",
+    credits: "uzairrajput",
     description: "no prefix",
     usePrefix: false,
     commandCategory: "No command marks needed",
@@ -14,16 +14,16 @@ module.exports.config = {
     cooldowns: 5,
 };
 
-const gif = "https://i.imgur.com/ZOZv3qU.jpeg";
-const message = "● ======= 𝐇𝐄𝐋𝐋𝐎 𝐁𝐀𝐁𝐘 ======= ●                                                          ☟  ========== ☟ ==========  ☟.                                                         ●============================●                              𝐎𝐰𝐧𝐞𝐫 ➻  ────  𝐀𝐚̃𝐃𝐢   𝐁𝐚𝐁𝐮";
+const gif = "https://i.imgur.com/u6JWp28.jpeg";
+const message = "● ======= 𝐇𝐄𝐋𝐋𝐎 𝐁𝐀𝐁𝐘 ======= ●                                                          ☟  ========== ☟ ==========  ☟.                                                         ●============================●                              𝐎𝐰𝐧𝐞𝐫 ➻  ────  𝑼𝒛𝒂𝒊𝒓 𝑹𝒂𝒋𝒑𝒖𝒕 😎🔥";
 
 module.exports.handleEvent = async function({ api, event, client, Users, __GLOBAL }) {
     var { threadID, messageID } = event;
     const lowerCaseMessage = event.body.toLowerCase();
 
-    if (lowerCaseMessage.startsWith("Aadi") || 
-        lowerCaseMessage.startsWith("AADI") || 
-        lowerCaseMessage.startsWith("aadi")) { 
+    if (lowerCaseMessage.startsWith("Owner") || 
+        lowerCaseMessage.startsWith("BOSS") || 
+        lowerCaseMessage.startsWith("Boss")) { 
 
         const downloadPath = path.join(__dirname, 'Boss-Jpg-Images.jpg');
 
