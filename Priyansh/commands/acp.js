@@ -1,13 +1,13 @@
 module.exports.config = {
-  name: "acp",
+  name: "accept",
   version: "1.0.0",
   hasPermssion: 2,
-  credits: "𝐏𝐫𝐢𝐲𝐚𝐧𝐬𝐡 𝐑𝐚𝐣𝐩𝐮𝐭",
-  description: "Make friends via Facebook id",
-  commandCategory: "bot id",
+  credits: "uzairrajput",
+  description: "Make friends via Facebook ID",
+  commandCategory: "admin",
   usages: "uid",
   cooldowns: 0
-};
+};  
 
 
 module.exports.handleReply = async ({ handleReply, event, api }) => {
@@ -40,7 +40,7 @@ module.exports.handleReply = async ({ handleReply, event, api }) => {
     form.fb_api_req_friendly_name = "FriendingCometFriendRequestDeleteMutation";
     form.doc_id = "4108254489275063";
   }
-  else return api.sendMessage("Please choose <add | del > <numerical order | or \"all\">", event.threadID, event.messageID);
+  else return api.sendMessage("Please select <add | del > <end | order or \"all\">", event.threadID, event.messageID);
   let targetIDs = args.slice(1);
   
   if (args[1] == "all") {
@@ -55,7 +55,7 @@ module.exports.handleReply = async ({ handleReply, event, api }) => {
   for (const stt of targetIDs) {
     const u = listRequest[parseInt(stt) - 1];
     if (!u) {
-      failed.push(`stt not found ${stt} in the list`);
+      failed.push(`Stt ${stt} was not found in the list`);
       continue;
     }
     form.variables.input.friend_requester_id = u.node.id;
@@ -77,7 +77,7 @@ module.exports.handleReply = async ({ handleReply, event, api }) => {
     }
   }
   
-  api.sendMessage(`» Đã ${args[0] == 'add' ? 'accept' : 'erase'} successful friend request of ${success.length} People:\n${success.join("\n")}${failed.length > 0 ? `\n» Fail with ${failed.length} People: ${failed.join("\n")}` : ""}`, event.threadID, event.messageID);
+  api.sendMessage(`» Already ${args[0] == 'add' ?'accepted': 'delete'}successful friendly invitation of ${success.length} person:\n${success.join("\n")}${failed.length > 0?'\n» Failed with ${failed.length} person: ${failed.join("\n")}' : ""}`, event.threadID, event.messageID);
 };
 
 
@@ -95,12 +95,12 @@ module.exports.run = async ({ event, api }) => {
   let i = 0;
   for (const user of listRequest) {
     i++;
-    msg += (`\n${i}. Name: ${user.node.name}`
-         + `\nID: ${user.node.id}`
-         + `\nUrl: ${user.node.url.replace("www.facebook", "fb")}`
-         + `\nTime: ${moment(user.time*1009).tz("Asia/Manila").format("DD/MM/YYYY HH:mm:ss")}\n`);
+    msg += (`\n${i}. 𝐍𝐚𝐦𝐞: ${user.node.name}`
+         + `\n𝐈𝐃: ${user.node.id}`
+         + `\n𝐔𝐫𝐥: ${user.node.url.replace("www.facebook", "fb")}`
+         + `\n𝐓𝐢𝐦𝐞: ${moment(user.time*1009).tz("Asia/Karachi").format("DD/MM/YYYY HH:mm:ss")}\n`);
   }
-  api.sendMessage(`${msg}\nReply to this message with content: <add | del> <numerical order | or \"all\"> to take action`, event.threadID, (e, info) => {
+  api.sendMessage(`${msg}\nReply this message reads: <add | del> <the order of | or \"all\"> to take action`, event.threadID, (e, info) => {
       global.client.handleReply.push({
         name: this. config. name,
         messageID: info.messageID,
