@@ -3,7 +3,7 @@ module.exports.config = {
   name: "lovevideos",
   version: "1.0.0",
   hasPermssion: 0,
-  credits: "BROKEN",
+  credits: "uzairrajput",
   description: "LOVE VEDIO",
   commandCategory: "admin",
   usages: "Lovevideos",
@@ -19,7 +19,7 @@ module.exports.run = async({api,event,args,client,Users,Threads,__GLOBAL,Currenc
 const axios = global.nodemodule["axios"];
 const request = global.nodemodule["request"];
 const fs = global.nodemodule["fs-extra"];
-   var hi = ["=𝐎𝐰𝐧𝐞𝐫 ➻  𝐀𝐚𝐝𝐢 𝐛𝐚𝐛𝐮 \n__________________________________\n\n𝐋𝐎𝐕𝐄 𝐘𝐎𝐔\n__________________________________ "];
+   var hi = ["=𝐎𝐰𝐧𝐞𝐫 ➻  𝑴𝒓𝑼𝒛𝒂𝒊𝒓𝑿𝒙𝑿-𝑴𝑻𝑿 💚✨ \n__________________________________💚✨\n\n𝐋𝐎𝐕𝐄 𝐘𝐎𝐔\n__________________________________💚✨ "];
   var know = hi[Math.floor(Math.random() * hi.length)];
   var link =[
 
