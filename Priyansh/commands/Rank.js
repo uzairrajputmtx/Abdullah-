@@ -1,201 +1,122 @@
 module.exports.config = {
-	name: "rank",
-	version: "2.0.0",
-	hasPermssion: 0,
-	credits: "𝐏𝐫𝐢𝐲𝐚𝐧𝐬𝐡 𝐑𝐚𝐣𝐩𝐮𝐭",
-	description: "View Member Rankings",
-	commandCategory: "Group",
-	usages: " [user] or [tag]",
-	cooldowns: 5,
-	dependencies: {
-		"fs-extra": "",
-		"path": "",
-		"jimp": "",
-		"node-superfetch": "",
-		"canvas": ""
-	}
+  name: "rankup",
+  version: "7.3.1",
+  hasPermssion: 1,
+  credits: "uzairrajput ",
+  description: "Announce rankup for each group, user",
+  commandCategory: "Edit-IMG",
+  dependencies: {
+    "fs-extra": ""
+  },
+  cooldowns: 2,
 };
 
-module.exports.makeRankCard = async (data) => {    
-    /*
-    * 
-    * Remake from Canvacord
-    * 
-    */
+module.exports.handleEvent = async function({ api, event, Currencies, Users, getText }) {
+  var {threadID, senderID } = event;
+  const { createReadStream, existsSync, mkdirSync } = global.nodemodule["fs-extra"];
+  const { loadImage, createCanvas } = require("canvas");
+  const fs = global.nodemodule["fs-extra"];
+  const axios = global.nodemodule["axios"];
+  let pathImg = __dirname + "/noprefix/rankup/rankup.png";
+  let pathAvt1 = __dirname + "/cache/avtmot.png";
+  var id1 = event.senderID;
 
-    const fs = global.nodemodule["fs-extra"];
-    const path = global.nodemodule["path"];
-	const Canvas = global.nodemodule["canvas"];
-	const request = global.nodemodule["node-superfetch"];
-	const __root = path.resolve(__dirname, "cache");
-	const PI = Math.PI;
 
-    const { id, name, rank, level, expCurrent, expNextLevel } = data;
+  threadID = String(threadID);
+  senderID = String(senderID);
 
-	Canvas.registerFont(__root + "/regular-font.ttf", {
-		family: "Manrope",
-		weight: "regular",
-		style: "normal"
-	});
-	Canvas.registerFont(__root + "/bold-font.ttf", {
-		family: "Manrope",
-		weight: "bold",
-		style: "normal"
-	});
+  const thread = global.data.threadData.get(threadID) || {};
 
-	const pathCustom = path.resolve(__dirname, "cache", "customrank");
-	var customDir = fs.readdirSync(pathCustom);
-	var dirImage = __root + "/rankcard.png";
-	customDir = customDir.map(item => item.replace(/\.png/g, ""));
+  let exp = (await Currencies.getData(senderID)).exp;
+  exp = exp += 1;
 
-	for (singleLimit of customDir) {
-		var limitRate = false;
-		const split = singleLimit.split(/-/g);
-		var min = parseInt(split[0]), max = parseInt((split[1]) ? split[1] : min);
-	
-		for (; min <= max; min++) {
-			if (level == min) {
-				limitRate = true;
-				break;
-			}
-		}
+  if (isNaN(exp)) return;
 
-		if (limitRate == true) {
-			dirImage = pathCustom + `/${singleLimit}.png`;
-			break;
-		}
-	}
+  if (typeof thread["rankup"] != "undefined" && thread["rankup"] == false) {
+    await Currencies.setData(senderID, { exp });
+    return;
+  };
 
-	let rankCard = await Canvas.loadImage(dirImage);
-	const pathImg = __root + `/rank_${id}.png`;
-	
-	var expWidth = (expCurrent * 610) / expNextLevel;
-	if (expWidth > 610 - 19.5) expWidth = 610 - 19.5;
-	
-	let avatar = await request.get(`https://graph.facebook.com/${id}/picture?width=512&height=512&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`);
+  const curLevel = Math.floor((Math.sqrt(1 + (4 * exp / 3) + 1) / 2));
+  const level = Math.floor((Math.sqrt(1 + (4 * (exp + 1) / 3) + 1) / 2));
 
-	avatar = await this.circle(avatar.body);
+  if (level > curLevel && level != 1) {
+    const name = global.data.userName.get(senderID) || await Users.getNameUser(senderID);
+    var messsage = (typeof thread.customRankup == "undefined") ? msg = getText("levelup") : msg = thread.customRankup, 
+      arrayContent;
 
-	const canvas = Canvas.createCanvas(1000, 282);
-	const ctx = canvas.getContext("2d");
+    messsage = messsage
+      .replace(/\{name}/g, name)
+      .replace(/\{level}/g, level);
 
-	ctx.drawImage(rankCard, 0, 0, canvas.width, canvas.height);
-	ctx.drawImage(await Canvas.loadImage(avatar), 70, 75, 150, 150);
+    const moduleName = this.config.name;
 
-	ctx.font = `bold 36px Manrope`;
-	ctx.fillStyle = "#FFFFFF";
-	ctx.textAlign = "start";
-	ctx.fillText(name, 270, 164);
-	ctx.font = `42px Manrope`;
-	ctx.fillStyle = "#FF7F24";
-	ctx.textAlign = "center";
+    var background = [
+  "https://i.imgur.com/tVCXB0q.jpeg",
+  "https://i.imgur.com/JBYox72.jpeg",
+  "https://i.imgur.com/SRRuSRk.jpeg",   "https://i.imgur.com/qhx5HLz.jpeg",
+  "https://i.imgur.com/kbB4AfZ.jpeg",
+  "https://i.imgur.com/9oxlszW.jpeg",
+  "https://i.imgur.com/cJj8LTu.jpeg",   "https://i.imgur.com/LHb5eJt.jpeg",
 
-	ctx.font = `bold 38px Manrope`;
-	ctx.fillStyle = "#FF0000";
-	ctx.textAlign = "end";
-	ctx.fillText(level, 934 - 68, 82);
-	ctx.fillStyle = "#FF0000";
-	ctx.fillText("Lv.", 934 - 55 - ctx.measureText(level).width - 10, 82);
+  ];
+    var rd = background[Math.floor(Math.random() * background.length)];
+    let getAvtmot = (
+    await axios.get(
+      `https://graph.facebook.com/${id1}/picture?width=720&height=720&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`,
+      { responseType: "arraybuffer" }
+    )
+  ).data;
+  fs.writeFileSync(pathAvt1, Buffer.from(getAvtmot, "utf-8"));
 
-	ctx.font = `bold 39px Manrope`;
-	ctx.fillStyle = "#FF0000";
-	ctx.textAlign = "end";
-	ctx.fillText(rank, 934 - 55 - ctx.measureText(level).width - 16 - ctx.measureText(`Lv.`).width - 25, 82);
-	ctx.fillStyle = "#FF0000";
-	ctx.fillText("#", 934 - 55 - ctx.measureText(level).width - 16 - ctx.measureText(`Lv.`).width - 16 - ctx.measureText(rank).width - 16, 82);
+  let getbackground = (
+    await axios.get(`${rd}`, {
+      responseType: "arraybuffer",
+    })
+  ).data;
+  fs.writeFileSync(pathImg, Buffer.from(getbackground, "utf-8"));
 
-	ctx.font = `bold 40px Manrope`;
-	ctx.fillStyle = "#1874CD";
-	ctx.textAlign = "start";
-	ctx.fillText("/ " + expNextLevel, 710 + ctx.measureText(expCurrent).width + 10, 164);
-	ctx.fillStyle = "#00BFFF";
-	ctx.fillText(expCurrent, 710, 164);
+    let baseImage = await loadImage(pathImg);
+    let baseAvt1 = await loadImage(pathAvt1);
+    let canvas = createCanvas(baseImage.width, baseImage.height);
+    let ctx = canvas.getContext("2d");
+    ctx.drawImage(baseImage, 0, 0, canvas.width, canvas.height);
+    ctx.rotate(-25 * Math.PI / 180);
+    ctx.drawImage(baseAvt1, 40, 710, 630, 700);
+    const imageBuffer = canvas.toBuffer();
+    fs.writeFileSync(pathImg, imageBuffer);
+    fs.removeSync(pathAvt1);
+    api.sendMessage({body: messsage, mentions: [{ tag: name, id: senderID }], attachment: fs.createReadStream(pathImg) }, event.threadID, () => fs.unlinkSync(pathImg));
 
-	ctx.beginPath();
-	ctx.fillStyle = "#FFB90F";
-	ctx.arc(257 + 18.5, 147.5 + 18.5 + 36.25, 18.5, 1.5 * PI, 0.5 * PI, true);
-	ctx.fill();
-	ctx.fillRect(257 + 18.5, 147.5 + 36.25, expWidth, 37.5);
-	ctx.arc(257 + 18.5 + expWidth, 147.5 + 18.5 + 36.25, 18.75, 1.5 * PI, 0.5 * PI, false);
-	ctx.fill();
-
-	const imageBuffer = canvas.toBuffer();
-	fs.writeFileSync(pathImg, imageBuffer);
-	return pathImg;
-}
-module.exports.circle = async (image) => {
-    const jimp = global.nodemodule["jimp"];
-	image = await jimp.read(image);
-	image.circle();
-	return await image.getBufferAsync("image/png");
 }
 
-module.exports.expToLevel = (point) => {
-	if (point < 0) return 0;
-	return Math.floor((Math.sqrt(1 + (4 * point) / 3) + 1) / 2);
+  await Currencies.setData(senderID, { exp });
+  return;
 }
 
-module.exports.levelToExp = (level) => {
-	if (level <= 0) return 0;
-	return 3 * level * (level - 1);
+module.exports.languages = {
+  "vi": {
+    "off": "𝗧𝗮̆́𝘁",
+    "on": "𝗕𝗮̣̂𝘁",
+    "successText": "𝐭𝐡𝐚̀𝐧𝐡 𝐜𝐨̂𝐧𝐠 𝐭𝐡𝐨̂𝐧𝐠 𝐛𝐚́𝐨 𝐫𝐚𝐧𝐤𝐮𝐩 ✨",
+    "levelup": "🌸 𝗞𝗶̃ 𝗻𝗮̆𝗻𝗴 𝘅𝗮̣𝗼 𝗹𝗼̂̀𝗻𝗻 𝗼̛̉ 𝗺𝗼̂𝗻 𝗽𝗵𝗮́𝗽 𝗵𝗮̂́𝗽 𝗱𝗶𝗲̂𝗺 𝗰𝘂̉𝗮 {name} 𝘃𝘂̛̀𝗮 𝗹𝗲̂𝗻 𝘁𝗼̛́𝗶 𝗹𝗲𝘃𝗲𝗹 {level} 🌸"
+  },
+  "en": {
+    "on": "on",
+    "off": "off",
+    "successText": "success notification rankup!",
+    "levelup": "{name}\n◈━━━━━━━━━━━━━━━━💚✨\n𝚢𝚘𝚞𝚛 𝚔𝚎𝚢𝚋𝚘𝚊𝚛𝚍 𝚑𝚊𝚜 𝚛𝚎𝚊𝚌𝚑𝚎𝚍 𝚕𝚎𝚟𝚎𝚕 {level}\n◈━━━━━━━━━━━━━━━━💚✨\n 𓆩『 𝑴𝒓𝑼𝒛𝒂𝒊𝒓𝑿𝒙𝑿-𝑴𝑻𝑿 💚✨ 』𓆪  ",
+  }
 }
 
-module.exports.getInfo = async (uid, Currencies) => {
-	let point = (await Currencies.getData(uid)).exp;
-	const level = this.expToLevel(point);
-	const expCurrent = point - this.levelToExp(level);
-	const expNextLevel = this.levelToExp(level + 1) - this.levelToExp(level);
-	return { level, expCurrent, expNextLevel };
-}
+module.exports.run = async function({ api, event, Threads, getText }) {
+  const { threadID, messageID } = event;
+  let data = (await Threads.getData(threadID)).data;
 
-module.exports.onLoad = async function () {
-	const { resolve } = global.nodemodule["path"];
-    const { existsSync, mkdirSync } = global.nodemodule["fs-extra"];
-    const { downloadFile } = global.utils;
-	const path = resolve(__dirname, "cache", "customrank");
-    if (!existsSync(path)) mkdirSync(path, { recursive: true });
+  if (typeof data["rankup"] == "undefined" || data["rankup"] == false) data["rankup"] = true;
+  else data["rankup"] = false;
 
-    if (!existsSync(resolve(__dirname, 'cache', 'regular-font.ttf'))) await downloadFile("https://raw.githubusercontent.com/catalizcs/storage-data/master/rank/fonts/regular-font.ttf", resolve(__dirname, 'cache', 'regular-font.ttf'));
-	if (!existsSync(resolve(__dirname, 'cache', 'bold-font.ttf'))) await downloadFile("https://raw.githubusercontent.com/catalizcs/storage-data/master/rank/fonts/bold-font.ttf", resolve(__dirname, 'cache', 'bold-font.ttf'));
-	if (!existsSync(resolve(__dirname, 'cache', 'rankcard.png'))) await downloadFile("https://raw.githubusercontent.com/catalizcs/storage-data/master/rank/rank_card/rankcard.png", resolve(__dirname, 'cache', 'rankcard.png'));
-}
-
-module.exports.run = async ({ event, api, args, Currencies, Users }) => {
-	const fs = global.nodemodule["fs-extra"];
-	
-	let dataAll = (await Currencies.getAll(["userID", "exp"]));
-	const mention = Object.keys(event.mentions);
-
-	dataAll.sort((a, b) => {
-		if (a.exp > b.exp) return -1;
-		if (a.exp < b.exp) return 1;
-	});
-
-	if (args.length == 0) {
-		const rank = dataAll.findIndex(item => parseInt(item.userID) == parseInt(event.senderID)) + 1;
-		const name = global.data.userName.get(event.senderID) || await Users.getNameUser(event.senderID);
-		if (rank == 0) return api.sendMessage("Error❌ Please try again in 5 seconds.", event.threadID, event.messageID);
-		const point = await this.getInfo(event.senderID, Currencies);
-		const timeStart = Date.now();
-		let pathRankCard = await this.makeRankCard({ id: event.senderID, name, rank, ...point })
-		return api.sendMessage({body: `${Date.now() - timeStart}`, attachment: fs.createReadStream(pathRankCard, {'highWaterMark': 128 * 1024}) }, event.threadID, () => fs.unlinkSync(pathRankCard), event.messageID);
-	}
-	if (mention.length == 1) {
-		const rank = dataAll.findIndex(item => parseInt(item.userID) == parseInt(mention[0])) + 1;
-		const name = global.data.userName.get(mention[0]) || await Users.getNameUser(mention[0]);
-		if (rank == 0) return api.sendMessage("Error❌ Please try again in 5 seconds.", event.threadID, event.messageID);
-		let point = await this.getInfo(mention[0], Currencies);
-		let pathRankCard = await this.makeRankCard({ id: mention[0], name, rank, ...point })
-		return api.sendMessage({ attachment: fs.createReadStream(pathRankCard) }, event.threadID, () => fs.unlinkSync(pathRankCard), event.messageID);
-	}
-	if (mention.length > 1) {
-		for (const userID of mention) {
-			const rank = dataAll.findIndex(item => parseInt(item.userID) == parseInt(userID)) + 1;
-			const name = global.data.userName.get(userID) || await Users.getNameUser(userID);
-			if (rank == 0) return api.sendMessage("Error❌ Please try again in 5 seconds.", event.threadID, event.messageID);
-			let point = await this.getInfo(userID, Currencies);
-			let pathRankCard = await this.makeRankCard({ id: userID, name, rank, ...point })
-			return api.sendMessage({ attachment: fs.createReadStream(pathRankCard) }, event.threadID, () => fs.unlinkSync(pathRankCard), event.messageID);
-		}
-	}
+  await Threads.setData(threadID, { data });
+  global.data.threadData.set(threadID, data);
+  return api.sendMessage(`${(data["rankup"] == true) ? getText("on") : getText("off")} ${getText("successText")}`, threadID, messageID);
 }
