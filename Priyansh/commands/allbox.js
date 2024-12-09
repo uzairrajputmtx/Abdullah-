@@ -1,7 +1,7 @@
 module.exports.config = {
   name: 'allbox',
   version: '1.0.0',
-  credits: '𝐏𝐫𝐢𝐲𝐚𝐧𝐬𝐡 𝐑𝐚𝐣𝐩𝐮𝐭',
+  credits: 'uzairrajput',
   hasPermssion: 2,
   description: '[Ban/Unban/Del/Remove] List[Data] thread The bot has joined in.',
   commandCategory: 'Admin',
@@ -13,7 +13,7 @@ module.exports.handleReply = async function ({ api, event, args, Threads, handle
   const { threadID, messageID } = event;
   if (parseInt(event.senderID) !== parseInt(handleReply.author)) return;
   const moment = require("moment-timezone");
-  const time = moment.tz("Asia/Kolkata").format("HH:MM:ss L");
+  const time = moment.tz("Asia/Karachi").format("HH:MM:ss L");
   var arg = event.body.split(" ");
   var idgr = handleReply.groupid[arg[1] - 1];
   var groupName = handleReply.groupName[arg[1] - 1];
@@ -26,7 +26,7 @@ module.exports.handleReply = async function ({ api, event, args, Threads, handle
           data.dateAdded = time;
           await Threads.setData(idgr, { data });
           global.data.threadBanned.set(idgr, { dateAdded: data.dateAdded });
-          return api.sendMessage(`»Notifications from Owner 𝐏𝐫𝐢𝐲𝐚𝐧𝐬𝐡 𝐑𝐚𝐣𝐩𝐮𝐭«\n\n Group of Friends Have been banned from using bots by Ban.`, idgr, () =>
+          return api.sendMessage(`»𝑵𝒐𝒕𝒊𝒇𝒊𝒄𝒂𝒕𝒊𝒐𝒏𝒔 𝑭𝒓𝒐𝒎 𝑶𝒘𝒏𝒆𝒓 𝑼𝒛𝒂𝒊𝒓-𝑴𝑻𝑿 💚✨«\n\n Group of Friends Have been banned from using bots by Ban.`, idgr, () =>
             api.sendMessage(`${api.getCurrentUserID()}`, () =>
               api.sendMessage(`★★BanSuccess★★\n\n🔷${groupName} \n🔰TID:${idgr}`, threadID, () =>
                 api.unsendMessage(handleReply.messageID))));
@@ -38,7 +38,7 @@ module.exports.handleReply = async function ({ api, event, args, Threads, handle
           data.dateAdded = null;
           await Threads.setData(idgr, { data });
           global.data.threadBanned.delete(idgr, 1);
-          return api.sendMessage(`»Notifications from Owner 𝐏𝐫𝐢𝐲𝐚𝐧𝐬𝐡 𝐑𝐚𝐣𝐩𝐮𝐭«\n\n Group Of Friends That Have Been Removed Board`, idgr, () =>
+          return api.sendMessage(`»𝑵𝒐𝒕𝒊𝒇𝒊𝒄𝒂𝒕𝒊𝒐𝒏𝒔 𝑭𝒓𝒐𝒎 𝑶𝒘𝒏𝒆𝒓 𝑼𝒛𝒂𝒊𝒓-𝑴𝑻𝑿 💚✨«\n\n Group Of Friends That Have Been Removed Board`, idgr, () =>
             api.sendMessage(`${api.getCurrentUserID()}`, () =>
               api.sendMessage(`★★𝐔𝐧𝐛𝐚𝐧𝐒𝐮𝐜𝐜𝐞𝐬𝐬★★\n\n🔷${groupName} \n🔰𝐓𝐈𝐃:${idgr} `, threadID, () =>
                 api.unsendMessage(handleReply.messageID))));
@@ -53,7 +53,7 @@ module.exports.handleReply = async function ({ api, event, args, Threads, handle
         }
 
         if (arg[0] == "out" || arg[0] == "Out") {
-          api.sendMessage(`»Notifications from Owner 𝐏𝐫𝐢𝐲𝐚𝐧𝐬𝐡 𝐑𝐚𝐣𝐩𝐮𝐭«\n\n ★★Deleted from chat★★ group`, idgr, () =>
+          api.sendMessage(`»𝑵𝒐𝒕𝒊𝒇𝒊𝒄𝒂𝒕𝒊𝒐𝒏𝒔 𝑭𝒓𝒐𝒎 𝑶𝒘𝒏𝒆𝒓 𝑼𝒛𝒂𝒊𝒓-𝑴𝑻𝑿 💚✨«\n\n ★★Deleted from chat★★ group`, idgr, () =>
             api.sendMessage(`${api.getCurrentUserID()}`, () =>
               api.sendMessage(`★★𝐎𝐮𝐭𝐒𝐮𝐜𝐜𝐞𝐬𝐬★★\n\n🔷${groupName} \n🔰𝐓𝐈𝐃:${idgr} `, threadID, () =>
                 api.unsendMessage(handleReply.messageID, () =>
@@ -79,7 +79,7 @@ module.exports.run = async function ({ api, event, args }) {
           if (thread.isGroup == true) threadList.push({ threadName: thread.name, threadID: thread.threadID, messageCount: thread.messageCount });
         }
         /////////////////////////////////////////////////////
-        //===== sắp xếp từ cao đến thấp cho từng nhóm =====//
+        //===== Arrange from high to low for each group =====//
         threadList.sort((a, b) => {
           if (a.messageCount > b.messageCount) return -1;
           if (a.messageCount < b.messageCount) return 1;
@@ -130,7 +130,7 @@ module.exports.run = async function ({ api, event, args }) {
               if (thread.isGroup == true) threadList.push({ threadName: thread.name, threadID: thread.threadID, messageCount: thread.messageCount });
           }
           /////////////////////////////////////////////////////
-          //===== sắp xếp từ cao đến thấp cho từng nhóm =====//
+          //===== Arrange from high to low for each group =====//
           threadList.sort((a, b) => {
               if (a.messageCount > b.messageCount) return -1;
               if (a.messageCount < b.messageCount) return 1;
@@ -142,7 +142,7 @@ module.exports.run = async function ({ api, event, args }) {
           page = parseInt(args[0]) || 1;
           page < -1 ? page = 1 : "";
           var limit = 10;
-          var msg = "🎭DS NHÓM [Data]🎭\n\n";
+          var msg = "🎭GROUP DIRECTORY [Data]🎭\n\n";
           var numPage = Math.ceil(threadList.length / limit);
 
           for (var i = limit * (page - 1); i < limit * (page - 1) + limit; i++) {
@@ -152,9 +152,9 @@ module.exports.run = async function ({ api, event, args }) {
               groupid.push(group.threadID);
               groupName.push(group.threadName);
           }
-          msg += `--Trang ${page}/${numPage}--\nDùng ${global.config.PREFIX}allbox + số trang/all\n\n`
+          msg += `--Page ${page}/${numPage}--\n Use ${global.config.PREFIX}allbox + Number of pages/all\n\n`
 
-          api.sendMessage(msg + '🎭Reply Out, Ban, Unban, Del[data]+ số thứ tự để Out, Ban, Unban, Del[data] thread đó!', event.threadID, (e, data) =>
+          api.sendMessage(msg + '🎭Reply Out, Ban, Unban, Del[data]+ Out order number, Ban, Unban, Del[data] thread there!', event.threadID, (e, data) =>
               global.client.handleReply.push({
                   name: this.config.name,
                   author: event.senderID,
