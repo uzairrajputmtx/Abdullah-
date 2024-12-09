@@ -2,7 +2,7 @@ module.exports.config = {
     name: "anifact",
     version: "1.0.0",
     hasPermision: 0,
-    credit: "𝐏𝐫𝐢𝐲𝐚𝐧𝐬𝐡 𝐑𝐚𝐣𝐩𝐮𝐭",
+    credit: "uzairrajput",
     description: "random animal fact by Juswa",
     commandCategory: "random-img",
     cooldowns: 0,
