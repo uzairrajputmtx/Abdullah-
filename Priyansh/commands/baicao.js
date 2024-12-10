@@ -2,7 +2,7 @@ module.exports.config = {
 	name: "cao3la",
 	version: "1.0.4",
 	hasPermssion: 0,
-	credits: "𝐏𝐫𝐢𝐲𝐚𝐧𝐬𝐡 𝐑𝐚𝐣𝐩𝐮𝐭",
+	credits: "uzairrajput",
 	description: "Game betting is reserved for groups that bet",
 	commandCategory: "game-mp",
 	usages: "[start/join/info/leave]",
@@ -142,9 +142,9 @@ module.exports.run = async ({ api, event, args }) => {
 		case "start":
 		case "-s": {
 			if (!values) return api.sendMessage("Currently there is no baicao created, you can create one by using baicao create", threadID, messageID);
-			if (values.author !== senderID) return api.sendMessage("You don't have to be the owner to start", threadID, messageID);
+			if (values.author !== senderID) return api.sendMessage("You don't have to be the owner mtxuzair to start", threadID, messageID);
 			if (values.player.length <= 1) return api.sendMessage("Currently you don't have any players joined, you can invite people to join by asking other players to join.", threadID, messageID);
-			if (values.start == 1) return api.sendMessage("The table is currently started by the owner of the table", threadID, messageID);
+			if (values.start == 1) return api.sendMessage("The table is currently started by the owner mtxuzair of the table", threadID, messageID);
 			values.start = 1;
 			return api.sendMessage("Your resume has been started", threadID, messageID);
 		}
@@ -153,7 +153,7 @@ module.exports.run = async ({ api, event, args }) => {
 		case "-i": {
 			if (typeof values.player == "undefined") return api.sendMessage("Currently there is no baicao created, you can create one by using baicao create", threadID, messageID);
 			return api.sendMessage(
-				"=== Ban Bai Cao ===" +
+				"=== High School ===" +
 				"\n- AuthorBaan: " + values.author +
 				"\n- Total number of players: " + values.player.length + "People"
 			, threadID, messageID);
