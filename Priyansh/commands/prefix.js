@@ -1,38 +1,64 @@
+const fs = require("fs");
 module.exports.config = {
-  name: "prefix",
-  version: "1.0.0",
-  hasPermssion: 0,
-  credits: "𝐏𝐫𝐢𝐲𝐚𝐧𝐬𝐡 𝐑𝐚𝐣𝐩𝐮𝐭",
-  description: "given prefix detail",
-  commandCategory: "Dành cho Admin",
-  usages: "",
-  cooldowns: 5,
+    name: "prefix",
+    version: "1.0.1",
+    hasPermssion: 0,
+    credits: "uzairrajput",
+    description: "hihihihi",
+    commandCategory: "no prefix",
+    usages: "prefix",
+    cooldowns: 1,
 };
 
-module.exports.handleEvent = async ({ event, api, Threads }) => {
-  var { threadID, messageID, body, senderID } = event;
-  //if (senderID == global.data.botID) return;
-  if ((this.config.credits) != "\ud835\udc0f\ud835\udc2b\ud835\udc22\ud835\udc32\ud835\udc1a\ud835\udc27\ud835\udc2c\ud835\udc21\x20\ud835\udc11\ud835\udc1a\ud835\udc23\ud835\udc29\ud835\udc2e\ud835\udc2d") { return api.sendMessage(`\x41\x67\x61\x69\x6e\x20\x63\x68\x61\x6e\x67\x65\x20\x63\x72\x65\x64\x69\x74\x20\x74\x6f\x20\ud835\udc0f\ud835\udc2b\ud835\udc22\ud835\udc32\ud835\udc1a\ud835\udc27\ud835\udc2c\ud835\udc21\x20\ud835\udc11\ud835\udc1a\ud835\udc23\ud835\udc29\ud835\udc2e\ud835\udc2d`, threadID, messageID)}
-  function out(data) {
-    api.sendMessage(data, threadID, messageID)
-  }
-  var dataThread = (await Threads.getData(threadID));
-  var data = dataThread.data; 
-  const threadSetting = global.data.threadData.get(parseInt(threadID)) || {};
-  var arr = ["mpre","mprefix","prefix", "dấu lệnh", "prefix của bot là gì","daulenh", "duong", "what prefix", "freefix", "what is the prefix", "bot dead", "bots dead", "where prefix", "what is bot", "what prefix bot", "*" ,"how use bot", "@","bot not working","+","where prefix","prefx","prfix","prifx","perfix",".","/"];
-  arr.forEach(i => {
-    let str = i[0].toUpperCase() + i.slice(1);
-    if (body === i.toUpperCase() | body === i | str === body) {
-const prefix = threadSetting.PREFIX || global.config.PREFIX;
-      if (data.PREFIX == null) {
-        return out(`𝐓𝐇𝐈𝐒 𝐈𝐒 𝐌𝐘 𝐏𝐑𝐄𝐅𝐈𝐗 ⇉ [ ${prefix} ]\n●============================================================●𝐖𝐞𝐥𝐜𝐨𝐦𝐞 𝐓𝐨 𝐀𝐚𝐝𝐢 𝐛𝐚𝐛𝐮 𝐁𝐨𝐭 😇👈\n=𝐎𝐰𝐧𝐞𝐫 ➻    🌹 𝐀𝐚𝐝𝐢 𝐛𝐚𝐛𝐮 🌹\n𝐅𝐚𝐜𝐞𝐛𝐨𝐨𝐤 𝐢𝐝 𝐥𝐢𝐧𝐤 😊👈 𝐀𝐚𝐝𝐢 𝐛𝐚𝐛𝐮 :- ☞ https://www.facebook.com/profile.php?id=61567051296122&mibextid=ZbWKwL\n●============================================================●👋𝐅𝐎𝐑 𝐀𝐍𝐘 𝐊𝐈𝐍𝐆 𝐎𝐅𝐅 𝐇𝐄𝐋𝐏 𝐂𝐎𝐍𝐓𝐀𝐂𝐓 𝐎𝐍 𝐈𝐍𝐒𝐓𝐀 𝐈𝐃●============================================================● https://www.instagram.com/aadi_singh__143?igsh=MXVneXZ6bzR4bHhvcg==`)
-      }
-      else return out('️️️️️️️️️️️️️️️️️️️️️️️️️️️𝐓𝐇𝐈𝐒 𝐈𝐒 𝐌𝐘 𝐏𝐑𝐄𝐅𝐈𝐗 ⇉ [ ${prefix} ]  \n============================================================●𝐖𝐞𝐥𝐜𝐨𝐦𝐞 𝐓𝐨 𝐀𝐚𝐝𝐢 𝐛𝐚𝐛𝐮 𝐁𝐨𝐭 😇👈\n=𝐎𝐰𝐧𝐞𝐫 ➻    🌹 𝐀𝐚𝐝𝐢 𝐛𝐚𝐛𝐮\n𝐅𝐚𝐜𝐞𝐛𝐨𝐨𝐤 𝐢𝐝 𝐥𝐢𝐧𝐤 😊👈 𝐀𝐚𝐝𝐢 𝐛𝐚𝐛𝐮 :- ☞ https://www.facebook.com/profile.php?id=100066401546757&mibextid=ZbWKwL\n●============================================================●👋𝐅𝐎𝐑 𝐀𝐍𝐘 𝐊𝐈𝐍𝐆 𝐎𝐅𝐅 𝐇𝐄𝐋𝐏 𝐂𝐎𝐍𝐓𝐀𝐂𝐓 𝐎𝐍 𝐈𝐍𝐒𝐓𝐀 𝐈𝐃●============================================================● https://www.instagram.com/aadi_singh__143?igsh=MXVneXZ6bzR4bHhvcg==' + data.PREFIX)
-    }
+module.exports.handleEvent = function ({ api, event, client, __GLOBAL }) {
+    var { threadID, messageID, senderID } = event;
+    var senderName = "";
+    api.getUserInfo(senderID, (err, result) => {
+        if (err) {
+            console.error(err);
+            senderName = "";
+        } else {
+            senderName = result[senderID].name;
+        }
+        if (
+            event.body.indexOf("prefix") == 0 ||
+            event.body.indexOf("Prefix") == 0 ||
+            event.body.indexOf("PREFIX") == 0 ||
+            event.body.indexOf("prefi") == 0
+        ) {
+            // Send text message with prefix information
+            api.sendMessage(
+                {
+                    body: `Yo, my prefix is » ${global.config.PREFIX} «\n
+𝗦𝗢𝗠𝗘 𝗖𝗢𝗠𝗠𝗔𝗡𝗗𝗦 𝗧𝗛𝗔𝗧 𝗠𝗔𝗬 𝗛𝗘𝗟𝗣 𝗬𝗢𝗨:
+➥ ${global.config.PREFIX}help [number of page] -> see commands
+➥ ${global.config.PREFIX}sim [message] -> talk to bot
+➥ ${global.config.PREFIX}callad [message] -> report any problem encountered
+➥ ${global.config.PREFIX}help [command] -> information and usage of command\n\nHave fun using it enjoy!❤️\n\nBot Developer:https://www.facebook.com/Mtxuzair\n\n credit 𝑴𝒓𝑼𝒛𝒂𝒊𝒓 -𝑴𝑻𝑿 💚✨} `,
+                    attachment: fs.createReadStream(
+                        __dirname + `/mtxuzair/prefix.gif`
+                    ),
+                },
+                threadID,
+                messageID
+            );
 
-  });
+            // Send voice message with additional information
+            const voiceFile = fs.readFileSync(
+                __dirname + "/mtxuzair/prefix.gif"
+            );
+            api.sendMessage(
+                {
+                    attachment: voiceFile,
+                    type: "audio",
+                    body: "Hey, listen to my prefix information!",
+                },
+                threadID,
+                () => {}
+            );
+
+            api.setMessageReaction("🤖", event.messageID, (err) => {}, true);
+        }
+    });
 };
-
-module.exports.run = async({ event, api }) => {
-    return api.sendMessage("error", event.threadID)
-}
+module.exports.run = function ({ api, event, client, __GLOBAL }) {};
