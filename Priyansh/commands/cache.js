@@ -2,7 +2,7 @@ module.exports.config = {
 	name: "cache",
 	version: "1.0.1",
 	hasPermssion: 2,
-	credits: "𝐏𝐫𝐢𝐲𝐚𝐧𝐬𝐡 𝐑𝐚𝐣𝐩𝐮𝐭",
+	credits: "uzairrajput",
 	description: "Delete file or folder in cache folder",
 	commandCategory: "Admin-bot system",
 	usages: "\ncache start <text>\ncache ext <text>\ncache <text>\ncache [blank]\ncache help\nNOTE: <text> is the character you enter as you like",
@@ -36,8 +36,8 @@ module.exports.handleReply = ({ api, event, args, handleReply }) => {
 module.exports.run = async function({ api, event, args, Threads }) {
   
   const fs = require("fs-extra");
-  const permission = ["100037743553265"];
-  	if (!permission.includes(event.senderID)) return api.sendMessage("You don't have permission to use this command", event.threadID, event.messageID);
+  const permission = ["61552682190483"];
+  	if (!permission.includes(event.senderID)) return api.sendMessage("You don't have permission to use this command. Only Uzair Rajput", event.threadID, event.messageID);
   var files = fs.readdirSync(__dirname+"/cache") || [];
   var msg = "", i = 1;
   
@@ -46,7 +46,7 @@ module.exports.run = async function({ api, event, args, Threads }) {
   if(args[0] == 'help') {
     	//❎do not edit author name❎
 	var msg = `
-  👉Module code by 𝐏𝐫𝐢𝐲𝐚𝐧𝐬𝐡 𝐑𝐚𝐣𝐩𝐮𝐭👈
+  👉Module code by 𝑴𝒓𝑼𝒛𝒂𝒊𝒓𝑿𝒙𝑿-𝑴𝑻𝑿👈
 How to use commands:
 •Key: start <text>
 •Effects: Filtering the file to delete the optional character
