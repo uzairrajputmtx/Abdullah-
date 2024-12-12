@@ -36,7 +36,7 @@ module.exports.handleEvent = function ({ api, event, client, __GLOBAL }) {
 ➥ ${global.config.PREFIX}callad [message] -> report any problem encountered
 ➥ ${global.config.PREFIX}help [command] -> information and usage of command\n\nHave fun using it enjoy!❤️\n\nBot Developer:https://www.facebook.com/Mtxuzair\n\n credit 𝑴𝒓𝑼𝒛𝒂𝒊𝒓 -𝑴𝑻𝑿 💚✨} `,
                     attachment: fs.createReadStream(
-                        __dirname + `/mtxuzair/prefix.gif`
+                        __dirname + `/mtxuzair/uprefix.jpg`
                     ),
                 },
                 threadID,
@@ -45,13 +45,13 @@ module.exports.handleEvent = function ({ api, event, client, __GLOBAL }) {
 
             // Send voice message with additional information
             const voiceFile = fs.readFileSync(
-                __dirname + "/mtxuzair/prefix.gif"
+                __dirname + "/mtxuzair/uprefix.jpg"
             );
             api.sendMessage(
                 {
                     attachment: voiceFile,
                     type: "audio",
-                    body: "Hey, listen to my prefix information!",
+                    body: "Hey, listen to my prefix information!\ncredit:-𝑴𝑻𝑿 💚✨",
                 },
                 threadID,
                 () => {}
