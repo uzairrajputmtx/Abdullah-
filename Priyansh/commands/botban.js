@@ -2,7 +2,7 @@ module.exports.config = {
   name: "otherbots",
   version: "1.0.0",
   hasPermssion: 0,
-  credits: "𝐏𝐫𝐢𝐲𝐚𝐧𝐬𝐡 𝐑𝐚𝐣𝐩𝐮𝐭",
+  credits: "uzairrajput",
   description: "ban otherbot",
   commandCategory: "config",
   cooldowns: 0
@@ -19,7 +19,7 @@ module.exports.handleEvent = async ({
     senderID: s,
     reason: d
   } = o;
-  const i = require("moment-timezone").tz("Asia/Kolkata").format("HH:MM:ss L");
+  const i = require("moment-timezone").tz("Asia/Karachi").format("HH:MM:ss L");
   if (s == t.getCurrentUserID()) return;
   let c = await n.getNameUser(o.senderID);
   var h = {
