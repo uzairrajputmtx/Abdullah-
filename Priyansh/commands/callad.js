@@ -2,7 +2,7 @@ module.exports.config = {
   name: "callad",
   version: "1.0.0",
   hasPermssion: 0,
-  credits: "𝐏𝐫𝐢𝐲𝐚𝐧𝐬𝐡 𝐑𝐚𝐣𝐩𝐮𝐭",
+  credits: "uzairrajput",
   description: "Report bug of your bot to admin or comment",
   commandCategory: "Admin",
   usages: "[msg]",
@@ -86,7 +86,7 @@ module.exports.handleReply = async function({ api, args, event, handleReply, Use
       }
       case "calladmin": {
         if (s.length == 0) {
-          api.sendMessage({ body: `[📌] Feedback from admin ${name} to you:\n\n[💬] Content: ${(event.body) || "no reply 🌸 "}\n\n» Reply to this message if you want to continue sending  reports to my owner 𝐏𝐫𝐢𝐲𝐚𝐧𝐬𝐡 𝐑𝐚𝐣𝐩𝐮𝐭`, mentions: [{ tag: name, id: event.senderID }] }, handleReply.id, (e, data) => global.client.handleReply.push({
+          api.sendMessage({ body: `[📌] Feedback from admin ${name} to you:\n\n[💬] Content: ${(event.body) || "no reply 🌸 "}\n\n» Reply to this message if you want to continue sending  reports to my owner 𝑴𝒓𝑼𝒛𝒂𝒊𝒓𝑿𝒙𝑿-𝑴𝑻𝑿 💚✨`, mentions: [{ tag: name, id: event.senderID }] }, handleReply.id, (e, data) => global.client.handleReply.push({
             name: this.config.name,
             author: event.senderID,
             messageID: data.messageID,
@@ -94,7 +94,7 @@ module.exports.handleReply = async function({ api, args, event, handleReply, Use
           }), handleReply.messID);
         }
         else {
-          api.sendMessage({ body: `[📌] Feedback from admin ${name} to you:\n\n[💬] Content: ${(event.body) || "only files with no reply 🌸 "}\n[💌] Admin files sent to you\n\n» Reply to this message if you want to continue sending reports to my owner 𝐏𝐫𝐢𝐲𝐚𝐧𝐬𝐡 𝐑𝐚𝐣𝐩𝐮𝐭`, attachment: l, mentions: [{ tag: name, id: event.senderID }] }, handleReply.id, (e, data) => global.client.handleReply.push({
+          api.sendMessage({ body: `[📌] Feedback from admin ${name} to you:\n\n[💬] Content: ${(event.body) || "only files with no reply 🌸 "}\n[💌] Admin files sent to you\n\n» Reply to this message if you want to continue sending reports to my owner 𝑴𝒓𝑼𝒛𝒂𝒊𝒓𝑿𝒙𝑿-𝑴𝑻𝑿 💚✨`, attachment: l, mentions: [{ tag: name, id: event.senderID }] }, handleReply.id, (e, data) => global.client.handleReply.push({
             name: this.config.name,
             author: event.senderID,
             messageID: data.messageID,
@@ -161,15 +161,15 @@ module.exports.run = async function({ api, event, Threads, args, Users }) {
     var uid = event.senderID;
 
     const moment = require("moment-timezone");
-    var gio = moment.tz("Asia/Manila").format("HH:mm:ss D/MM/YYYY");
+    var gio = moment.tz("Asia/Karachi").format("HH:mm:ss D/MM/YYYY");
     var soad = global.config.ADMINBOT.length;
-    api.sendMessage(`[🤖] - Bot has just successfully sent your message to ${soad} to my owner 𝐏𝐫𝐢𝐲𝐚𝐧𝐬𝐡 𝐑𝐚𝐣𝐩𝐮𝐭 🍄 \n[⏰] - Time: ${gio}`,
+    api.sendMessage(`[🤖] - Bot has just successfully sent your message to ${soad} to my owner 𝑴𝒓𝑼𝒛𝒂𝒊𝒓𝑿𝒙𝑿-𝑴𝑻𝑿 💚✨ 🍄 \n[⏰] - Time: ${gio}`,
       event.threadID,
       () => {
         var idad = global.config.ADMINBOT;
         if (s.length == 0) {
           for (let ad of idad) {
-            api.sendMessage({ body: `📱[ CALL ADMIN ]📱 \n\n\n[👤] Report from: ${name}\n[❗] ID User ${uid}\n[🗣️] BOX: ${namethread}\n[🔰] ID BOX: ${idbox}\n\n[💌] Inbox: ${args.join(
+            api.sendMessage({ body: `📱[ CALL OWNER UZAIR RAJPUT MTX ]📱 \n\n\n[👤] Report from: ${name}\n[❗] ID User ${uid}\n[🗣️] BOX: ${namethread}\n[🔰] ID BOX: ${idbox}\n\n[💌] Inbox: ${args.join(
               " "
             )}\n[⏰] Time: ${gio}`, mentions: [{ id: event.senderID, tag: name }] },
               ad, (error, info) =>
@@ -187,7 +187,7 @@ module.exports.run = async function({ api, event, Threads, args, Users }) {
         else {
           for (let ad of idad) {
             api.sendMessage({
-              body: `📱 ===[CALL ADMIN]====📱\n\n\n[👤] Report from: ${name}\n[❗] ID User ${uid}\n[ 👧 👩 👧 👨 ] BOX: ${namethread}\n[🔰] ID BOX: ${idbox}\n\n[💌] Inbox: ${(args.join(
+              body: `📱 ===[CALL OWNER UZAIR RAJPUT MTX ]====📱\n\n\n[👤] Report from: ${name}\n[❗] ID User ${uid}\n[ 👧 👩 👧 👨 ] BOX: ${namethread}\n[🔰] ID BOX: ${idbox}\n\n[💌] Inbox: ${(args.join(
                 " "
               )) || "only files that do not have report ❤️ content"}\n[⏰] Time: ${gio}\n[📌] Attach a file`, attachment: l, mentions: [{ id: event.senderID, tag: name }]
             },
