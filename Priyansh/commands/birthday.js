@@ -6,7 +6,7 @@ module.exports.config = {
 
  hasPermssion: 0,
 
- credits: "Mr Chand",
+ credits: "uzairrajput",
 
  description: "",
 
@@ -32,6 +32,6 @@ module.exports.run = function ({ event, api }) {
 
 
 
-    return api.sendMessage(`𝐂𝐇𝐀𝐍𝐃 𝐊𝐈 𝐁𝐈𝐑𝐓𝐇𝐃𝐀𝐘 𝐌𝐀𝐈𝐍 𝐉𝐔𝐒𝐓\n» ${days} days ${hours} hours ${minutes} minutes ${seconds} seconds« 𝐑𝐇𝐓𝐀 𝐇𝐀𝐈`, event.threadID, event.messageID);
+    return api.sendMessage(`𝑼𝒁𝑨𝑰𝑹 𝑲𝑰.𝑩𝑰𝑹𝑻𝑯𝑫𝑨𝒀 𝑴𝑬 𝑱𝑼𝑺𝑻\n» ${days} days ${hours} hours ${minutes} minutes ${seconds} seconds« 𝑹𝑬𝑯𝑻𝑬 𝑯𝑨𝑰𝑵..`, event.threadID, event.messageID);
 
 }
