@@ -3,7 +3,7 @@ module.exports.config = {
 	name: "bruh",
     version: "1.0.1",
 	hasPermssion: 0,
-	credits: "𝐏𝐫𝐢𝐲𝐚𝐧𝐬𝐡 𝐑𝐚𝐣𝐩𝐮𝐭", 
+	credits: "uzairrajput", 
 	description: "hihihihi",
 	commandCategory: "Không cần dấu lệnh",
 	usages: "Bủh",
@@ -16,7 +16,7 @@ module.exports.handleEvent = function({ api, event, client, __GLOBAL }) {
 	if (event.body.indexOf("bruh")==0 || (event.body.indexOf("Bruh")==0) && !bot.includes(event.senderID)) {
 		var msg = {
 				body: "Bruh Bruuh",
-				attachment: fs.createReadStream(__dirname + `/noprefix/xxx.mp3`)
+				attachment: fs.createReadStream(__dirname + `/mtxuzair/xxx.mp3`)
 			}
 			api.sendMessage(msg, threadID, messageID);
 		}
